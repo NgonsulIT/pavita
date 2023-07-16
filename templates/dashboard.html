@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../static/style/dashboard.css" />
+    <link rel="stylesheet" href="../../static/style/main_dashboard.css" />
+    <link rel="stylesheet" href="../../static/style/nav_side.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./style/dashboard.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./style/main_dashboard.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./style/nav_side.css')}}"
+    />
+    <title>Dashboard Pavita</title>
+    <!-- <script type="module" src="../static/script/clock.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      function fetchLatestImage() {
+        $.get("/latest_image", function (response) {
+          var latestImage = response.image;
+          if (latestImage) {
+            $("#image").attr("src", latestImage);
+          }
+        });
+      }
+
+      function predictImage() {
+        $.get("/predict", function (response) {
+          var result = response.result;
+          $("#hasil-predict").text("Klasifikasi Gambar : " + result);
+        });
+      }
+
+      setInterval(fetchLatestImage, 2000);
+    </script>
+  </head>
+  <body onload="fetchLatestImage()">
+    <aside>
+      <div class="menu-utama">
+        <a href="{{ url_for('dashboard') }}" class="tombol">
+          <img src="../../static/icon/dashboard-icon.png" alt="" />
+          <p>Dashboard</p>
+        </a>
+        <a href="{{ url_for('gallery') }}" class="tombol">
+          <img src="../../static/icon/gallery-icon.png" alt="" />
+          <p>Gallery</p>
+        </a>
+        <a href="{{ url_for('info') }}" class="tombol">
+          <img src="../../static/icon/info-icon.png" alt="" />
+          <p>Informasi</p>
+        </a>
+      </div>
+      <a href="{{ url_for('logout') }}" action="" class="tombol">
+        <img src="../../static/icon/keluar-icon.png" alt="" />
+        <p>Keluar</p>
+      </a>
+    </aside>
+    <main>
+      <header>
+        <h1 class="sapaan">SELAMAT DATANG</h1>
+        <div class="username-grup">
+          <h1 class="username">Pavita</h1>
+          <div id="clock"></div>
+
+          <script>
+            function displayTime() {
+              var date = new Date();
+              var time = date.toLocaleTimeString();
+              document.getElementById("clock").innerHTML = time;
+            }
+
+            displayTime();
+            setInterval(displayTime, 1000);
+          </script>
+        </div>
+      </header>
+      <div class="kontrol" id="kontrol">
+        <button id="predict-button" onclick="predictImage()">
+          <img width="55" src="../../static/icon/predict.png" alt="" />
+        </button>
+        <div class="status_device" id="status_device">
+          <h5>Status Device</h5>
+          <h3>{{status}}</h3>
+        </div>
+      </div>
+      <div class="hasil" id="hasil">
+        <h2 class="hasil-title" id="hasil-predict">Hasil Gambar :</h2>
+        <img id="image" src="" alt="Gambar Terbaru" />
+      </div>
+    </main>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          status: "-",
+        },
+        mounted() {
+          this.updateStatus();
+          setInterval(this.updateStatus, 5000); // Perbarui status setiap 5 detik
+        },
+        methods: {
+          updateStatus() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+              if (this.readyState == 4 && this.status == 200) {
+                app.status = this.responseText;
+              }
+            };
+            xhttp.open("GET", "/status", true);
+            xhttp.send();
+          },
+        },
+      });
+
+      function refreshPage() {
+        window.location.reload();
+      }
+    </script>
+  </body>
+</html>

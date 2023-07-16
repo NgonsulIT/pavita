@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../static/style/index.css" />
+    <link rel="stylesheet" href="../static/style/modal.css" />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./style/index.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./style/modal.css')}}"
+    />
+    <title>Layanan Ngonsul</title>
+    <script>
+      // JavaScript
+      window.addEventListener("load", function () {
+        var userAgent = navigator.userAgent.toLowerCase();
+        var isMobile =
+          /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(
+            userAgent
+          );
+
+        if (isMobile) {
+          document.getElementById("popup-modal").style.display = "block";
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <!-- HTML -->
+    <div id="popup-modal">
+      <div class="kartu">
+        <p>
+          Maaf, untuk memaksimalkan dashboard anda, kami mengatur situs ini
+          hanya dapat diakses melalui laptop atau desktop. Silakan gunakan
+          perangkat yang sesuai.
+        </p>
+        <a class="back" href="https://ngonsul.com/"> Kembali ke Website </a>
+      </div>
+    </div>
+
+    <h1>Layanan Ngonsul IT</h1>
+    <section class="kartu-login">
+      <h2>Login</h2>
+      <form action="{{ url_for('login') }}" method="post">
+        <div class="kotak-input">
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Username"
+          />
+        </div>
+        <div class="kotak-input">
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="Password"
+          />
+        </div>
+        <div class="login">
+          <input type="submit" value="Login" />
+        </div>
+      </form>
+      <div class="forgot">
+        <p>Forgot password ? <a href="">reset password</a></p>
+      </div>
+    </section>
+    <footer>
+      <p>Powered by</p>
+      <img src="../static/logo-putih.png" alt="" />
+      <p>Ngonsul IT</p>
+    </footer>
+  </body>
+</html>

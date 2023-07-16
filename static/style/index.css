@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Gluten:wght@400;500;600;700;800&family=Molle&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Poppins:ital,wght@0,300;0,400;0,500;1,200&family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300;400;500;700;900&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  padding: 0%;
+  margin: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #1e3151;
+}
+body h1 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 59px;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 10vh;
+}
+body section {
+  background: #FFFFFF;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  max-width: 380px;
+}
+body section h2 {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 46px;
+  color: #000000;
+}
+body section form {
+  width: 85%;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+body section form .kotak-input {
+  border-bottom: 1px solid #000000;
+  border-radius: 12px;
+  padding: 2px 5px;
+}
+body section form input {
+  width: 80%;
+  margin: 5px 0px;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 29px;
+}
+body section form .login {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;
+  background: #1E3151;
+}
+body section form .login input[type=submit] {
+  color: #ffffff;
+}
+body section .forgot {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+body section .forgot a {
+  color: #000AFF;
+}
+body footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 24px;
+  display: flex;
+  margin-top: auto;
+  color: #FFFFFF;
+}
+body footer img {
+  height: 35px;
+}/*# sourceMappingURL=index.css.map */

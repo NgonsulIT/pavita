@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Pavita</title>
+    <link rel="stylesheet" href="../../static/style/nav_side.css" />
+    <link rel="stylesheet" href="../../static/style/gallery.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./style/gallery.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./style/nav_side.css')}}"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <aside>
+      <div class="menu-utama">
+        <a href="{{ url_for('dashboard') }}" class="tombol">
+          <img src="../../static/icon/dashboard-icon.png" alt="" />
+          <p>Dashboard</p>
+        </a>
+        <a href="{{ url_for('gallery') }}" class="tombol">
+          <img src="../../static/icon/gallery-icon.png" alt="" />
+          <p>Gallery</p>
+        </a>
+        <a href="{{ url_for('info') }}" class="tombol">
+          <img src="../../static/icon/info-icon.png" alt="" />
+          <p>Informasi</p>
+        </a>
+      </div>
+      <a href="{{ url_for('logout') }}" action="" class="tombol">
+        <img src="../../static/icon/keluar-icon.png" alt="" />
+        <p>Keluar</p>
+      </a>
+    </aside>
+    <main>
+      <header>
+        <h1>Gallery Gambar</h1>
+        <p>
+          Untuk mengunduh gambar, klik tombol unduh, untuk menghapus gambar yang
+          ada, klik hapus, dan untuk memperjelas gambar, klik pada gambar.
+          Gambar akan dihapus setelah lebih dari 30 hari, sesuai dengan layanan
+          yang dipilih.
+        </p>
+      </header>
+      <div id="image-container"></div>
+    </main>
+    <script>
+      // Fungsi untuk membuka gambar dalam tab baru
+      function fetchImages() {
+        $.get("/images", function (response) {
+          var images = response.images;
+          var imageContainer = $("#image-container");
+          imageContainer.empty();
+          for (var i = 0; i < images.length; i++) {
+            var imageSrc = images[i];
+            var imageWrapper = $("<div>").addClass("image-wrapper");
+            var imgElement = $("<img>").attr("src", imageSrc);
+            var buttonContainer = $("<div>").addClass("button-container");
+            var downloadButton = $("<button>")
+              .addClass("download-button")
+              .text("Download");
+            var deleteButton = $("<button>")
+              .addClass("delete-button")
+              .text("Delete");
+
+            // Tombol Download
+            downloadButton.click(function (e) {
+              e.stopPropagation();
+              var imageSrc = $(this).parent().siblings("img").attr("src");
+              var link = document.createElement("a");
+              link.href = imageSrc;
+              link.download = "image.jpg";
+              link.click();
+            });
+
+            // Tombol Delete
+            deleteButton.click(function (e) {
+              e.stopPropagation();
+              var imageSrc = $(this).parent().siblings("img").attr("src");
+              $.ajax({
+                url: "/delete/" + imageSrc.replace(/\//g, "$"),
+                type: "POST",
+                success: function (response) {
+                  console.log("Image deleted:", imageSrc);
+                  fetchImages();
+                },
+              });
+            });
+
+            // Membuka gambar di tab baru saat diklik
+            imgElement.click(function () {
+              var imageSrc = $(this).attr("src");
+              window.open(imageSrc, "_blank");
+            });
+
+            buttonContainer.append(downloadButton, deleteButton);
+            imageWrapper.append(imgElement, buttonContainer);
+            imageContainer.append(imageWrapper);
+          }
+        });
+      }
+      setInterval(fetchImages, 2000);
+    </script>
+  </body>
+</html>

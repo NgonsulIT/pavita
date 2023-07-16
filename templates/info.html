@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard Pavita</title>
+    <link rel="stylesheet" href="../../static/style/nav_side.css" />
+    <link rel="stylesheet" href="../../static/style/info.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Righteous&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./style/info.css')}}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{url_for('static', filename='./style/nav_side.css')}}"
+    />
+  </head>
+  <body>
+    <aside>
+      <div class="menu-utama">
+        <a href="{{ url_for('dashboard') }}" class="tombol">
+          <img src="../../static/icon/dashboard-icon.png" alt="" />
+          <p>Dashboard</p>
+        </a>
+        <a href="{{ url_for('gallery') }}" class="tombol">
+          <img src="../../static/icon/gallery-icon.png" alt="" />
+          <p>Gallery</p>
+        </a>
+        <a href="{{ url_for('info') }}" class="tombol">
+          <img src="../../static/icon/info-icon.png" alt="" />
+          <p>Informasi</p>
+        </a>
+      </div>
+      <a href="{{ url_for('logout') }}" action="" class="tombol">
+        <img src="../../static/icon/keluar-icon.png" alt="" />
+        <p>Keluar</p>
+      </a>
+    </aside>
+    <main>
+      <header>
+        <h1>Informasi Pengguna</h1>
+      </header>
+      <section class="">
+        <table>
+          <tr>
+            <td>Username</td>
+            <td>:</td>
+            <td class="isi-tabel">Pavita_NMCU32UNOML</td>
+          </tr>
+          <tr>
+            <td>Sandi</td>
+            <td>:</td>
+            <td class="isi-tabel">ESP32C_ccPav</td>
+          </tr>
+          <tr>
+            <td>Jenis Layanan</td>
+            <td>:</td>
+            <td class="isi-tabel">Hosting Machine Learning</td>
+          </tr>
+          <tr>
+            <td>Lama Hosting</td>
+            <td>:</td>
+            <td class="isi-tabel">3 Bulan</td>
+          </tr>
+          <tr>
+            <td>Mulai Layanan</td>
+            <td>:</td>
+            <td class="isi-tabel">32 Mei 2023</td>
+          </tr>
+          <tr>
+            <td>Deskripsi</td>
+            <td>:</td>
+            <td class="isi-tabel">
+              layanan website ini dipesan untuk mengontrol dan menjadi hosting
+              untuk model Machine Learning sesuai model yang diberi oleh
+              pengguna.
+            </td>
+          </tr>
+        </table>
+      </section>
+    </main>
+  </body>
+</html>

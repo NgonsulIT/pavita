@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Gluten:wght@400;500;600;700;800&family=Molle&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Poppins:ital,wght@0,300;0,400;0,500;1,200&family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@300;400;500;700;900&display=swap");
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 95vh;
+  margin-left: 30px;
+  margin-left: 220px;
+}
+main header .sapaan {
+  font-family: "Righteous";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 6vh;
+  margin: 0px;
+  padding: 0px;
+  color: #005BAF;
+}
+main header .username-grup {
+  display: flex;
+  justify-content: space-between;
+}
+main header .username-grup .username {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 4vh;
+  margin: 0px;
+  color: #000000;
+}
+main header .username-grup #clock {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 4vh;
+  margin: 0px;
+  color: #000000;
+}
+main #kontrol {
+  display: flex;
+  align-items: center;
+}
+main #kontrol #predict-button {
+  width: 80px;
+  height: 80px;
+  background: #ffffff;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.45);
+  border: none;
+  border-radius: 10px;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main #kontrol #status_device {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  margin: 0px;
+  padding: 0px;
+  text-align: left;
+  justify-content: flex-start;
+}
+main #kontrol #status_device h5 {
+  font-size: 1.8rem;
+  color: #000000;
+  margin: 0px;
+  padding: 0px;
+}
+main #kontrol #status_device h3 {
+  font-size: 1.8rem;
+  margin: 0px;
+  padding: 0px;
+}
+main .hasil-title {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 2rem;
+  margin: 0px;
+  color: #000000;
+}
+main #image {
+  height: 55vh;
+  width: auto;
+  max-width: 640px;
+  max-height: 480px;
+  border: 1px solid #000000;
+}/*# sourceMappingURL=main_dashboard.css.map */
